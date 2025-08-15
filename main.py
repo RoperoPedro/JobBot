@@ -11,6 +11,12 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 # ---------------- CONFIG ----------------
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 USER_ID = int(os.getenv("TELEGRAM_USER_ID", "0"))
+
+requests.post(
+    f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+    data={"chat_id": USER_ID, "text": "🚀 El bot se ha iniciado correctamente desde GitHub Actions"}
+)
+
 KEYWORDS_INCLUDE = [k.strip().lower() for k in os.getenv("KEYWORDS_INCLUDE", "").split(",")]
 KEYWORDS_EXCLUDE = [k.strip().lower() for k in os.getenv("KEYWORDS_EXCLUDE", "").split(",")]
 LOCATIONS_INCLUDE = [l.strip().lower() for l in os.getenv("LOCATIONS_INCLUDE", "").split(",")]

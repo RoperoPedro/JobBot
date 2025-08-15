@@ -3,7 +3,7 @@ name: JobBot (LinkedIn+InfoJobs+Indeed)
 on:
   # Ejecuta cada día (UTC). Ajusta hora según quieras.
   schedule:
-    - cron: "0 5 * * *"    # 05:00 UTC → 07:00 Madrid (verano), 06:00 UTC → 07:00 Madrid (invierno)
+    - cron: "0 7 * * *"    # 05:00 UTC → 07:00 Madrid (verano), 06:00 UTC → 07:00 Madrid (invierno)
   # Permite lanzarlo a mano desde la pestaña Actions
   workflow_dispatch:
 

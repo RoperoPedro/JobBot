@@ -8,6 +8,17 @@ from playwright.sync_api import sync_playwright
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
+def debug(msg):
+    # Activa/desactiva con DEBUG_TELEGRAM=true/false en GitHub Actions → Variables
+    if os.getenv("DEBUG_TELEGRAM", "true").lower() == "true":
+        try:
+            requests.post(
+                f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+                data={"chat_id": USER_ID, "text": f"🛠 {msg}"}
+            )
+        except Exception:
+            pass
+
 # ---------------- CONFIG ----------------
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 USER_ID = int(os.getenv("TELEGRAM_USER_ID", "0"))
